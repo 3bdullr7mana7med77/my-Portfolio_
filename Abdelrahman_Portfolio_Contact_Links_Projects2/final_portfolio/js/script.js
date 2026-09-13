@@ -244,7 +244,7 @@
   // 5. INTERACTIVE NEURAL NETWORK PARTICLE CANVAS
   // ==========================================================================
   const NeuralCanvasManager = {
-    canvas: document.getElementById('hero-canvas'),
+    canvas: document.getElementById('neural-bg'),
     ctx: null,
     particles: [],
     numParticles: 45,
@@ -268,22 +268,7 @@
       this.resize();
       this.createParticles();
       this.bindEvents();
-      this.animate();
-
-      // Pause canvas when scrolled out of hero section to optimize CPU performance
-      const heroSection = document.getElementById('home');
-      if (heroSection && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            this.isActive = entry.isIntersecting;
-            if (this.isActive && !this.animationFrameId) {
-              this.animate();
-            }
-          });
-        }, { threshold: 0.05 });
-        observer.observe(heroSection);
-      }
-    },
+      this.animate(); },
 
     resize() {
       const rect = this.canvas.parentElement.getBoundingClientRect();
